@@ -1,304 +1,107 @@
-# Dataset
+# Clinical AI Bias Workshop  
+[![Google Colab](https://img.shields.io/badge/Platform-Google%20Colab-F9AB00?logo=googlecolab&logoColor=white)](#getting-started)
+[![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](#getting-started)
+[![Status](https://img.shields.io/badge/Status-In%20Preparation-6f42c1)](#status)
+[![Audience](https://img.shields.io/badge/Audience-Beginners%20to%20Intermediate-0a7ea4)](#workshop-goal)
 
-This folder contains the data files used for the workshop on clinical dataset bias, representativeness, and subgroup performance analysis.
+This repository contains the material for a hands-on workshop on **dataset bias, representativeness, and subgroup performance gaps in clinical AI**.
 
-The dataset supports the full workshop pipeline, including:
-- clinical case introduction
-- exploratory data analysis (EDA)
-- representativeness audit
-- model training and evaluation
-- subgroup performance gap analysis
-- experimental demonstration that bias can originate from dataset composition
+The workshop is designed for participants with limited coding experience and is intended to run primarily in **Google Colab**, with a strong focus on **interpretation, critical thinking, and fairness-aware model evaluation** rather than advanced implementation details.
 
 ---
 
-## Clinical task
+## Workshop goal
 
-The dataset is used for a **binary classification** task in a clinical setting:
+The purpose of the workshop is to help participants understand that:
 
-**Target variable:** `hospital_death`
+- bias can emerge from the **dataset**, not only from the algorithm
+- strong aggregate metrics can hide important **subgroup disparities**
+- a dataset can appear balanced and still be **non-representative**
+- changing the composition of the training data can change subgroup performance, even when the model remains the same
 
-Meaning:
-- `0` = the patient did **not** die in hospital
-- `1` = the patient **died** in hospital
-
-This task is used throughout the workshop to show how:
-- aggregate metrics can hide subgroup disparities
-- apparently balanced datasets may still be non-representative
-- changing the composition of the training data can change subgroup performance and observed bias
+The workshop combines a clinical use case, exploratory analysis, basic modeling, and controlled experiments to show how bias can be detected and discussed in a practical way.
 
 ---
 
-## Folder contents
+## Workshop structure
 
-This folder currently includes:
+The workshop is organized into four phases.
 
-- `full_data.csv`
-- `train_features.csv`
-- `train_labels.csv`
-- `test_features.csv`
-- `test_labels.csv`
+### 1. Clinical case and dataset introduction
+Participants are introduced to the clinical prediction task and to the dataset used throughout the workshop.
 
----
+### 2. Representativeness
+Participants explore how bias can arise from:
+- sample composition
+- inclusion criteria
+- clinical setting
+- site or device
+- collected variables
 
-## File overview
+This phase includes a paper-based audit focused on subgroup and sex distributions.
 
-### `full_data.csv`
-Complete dataset in a format closest to the original project-level data.
+### 3. Performance gap
+Participants observe how model performance changes across:
+- the full dataset
+- majority sex
+- minority sex
+- selected subgroup intersections, where feasible
 
-**Recommended use**
-- clinical case introduction
-- dataset description
-- exploratory data analysis
-- representativeness audit
-- subgroup definition
-- inspection of sensitive or stratification variables
+Metrics may include:
+- AUC
+- sensitivity
+- specificity
 
-**Notes**
-- includes both predictors and target-related context
-- best file for understanding the dataset structure
-- more suitable than preprocessed feature matrices for teaching and interpretation
+Both a simple baseline model and a lightweight ML/deep learning model may be used.
 
----
+### 4. Demonstration that bias originates in the dataset
+Participants see experimentally that, with the **same algorithm**, changing the composition of the training data can change subgroup performance and observed bias.
 
-### `train_features.csv`
-Preprocessed training features used as model input.
-
-**Recommended use**
-- model training
-- baseline comparison across algorithms
-- subgroup performance analysis
-- experimental scenarios with modified training distributions
-
-**Notes**
-- does **not** contain the target variable
-- larger than `full_data.csv` because it is already model-ready
-- categorical variables may have been expanded through encoding
-- intended for the modeling phase, not for intuitive dataset description
+This phase is based on multiple training scenarios with a **fixed test set**.
 
 ---
 
-### `train_labels.csv`
-Target values corresponding to `train_features.csv`.
+## Dataset
 
-**Recommended use**
-- supervised model training
-- performance evaluation on the training split
+The workshop uses the dataset already included in this project.
 
-**Notes**
-- contains the target column `hospital_death`
-- row order must match `train_features.csv`
+**Clinical task**
+- binary classification
+- prediction of `hospital_death`
 
----
+**Main files**
+- `dataset/full_data.csv`
+- `dataset/train_features.csv`
+- `dataset/train_labels.csv`
+- `dataset/test_features.csv`
+- `dataset/test_labels.csv`
 
-### `test_features.csv`
-Preprocessed test features used for final model evaluation.
+**Recommended usage**
+- use `full_data.csv` for dataset description, EDA, and representativeness audit
+- use train/test feature-label files for modeling and evaluation
 
-**Recommended use**
-- final model testing
-- subgroup comparison
-- performance gap analysis
-- fixed test set for bias-origin experiments
-
-**Notes**
-- does **not** contain the target variable
-- should always be used together with `test_labels.csv`
+For a more detailed description of the data files, see:
+- `dataset/README.md`
 
 ---
 
-### `test_labels.csv`
-Target values corresponding to `test_features.csv`.
+## Repository structure
 
-**Recommended use**
-- final evaluation of model predictions
-- comparison of overall vs subgroup metrics
-
-**Notes**
-- contains the target column `hospital_death`
-- row order must match `test_features.csv`
-
----
-
-## Features vs labels
-
-The project separates the data into:
-
-- **features**: input variables used by the model to make predictions
-- **labels**: correct target values the model must learn to predict
-
-In this workshop:
-- `train_features.csv` / `test_features.csv` = model inputs
-- `train_labels.csv` / `test_labels.csv` = model targets
-
-This is standard practice in machine learning workflows.
-
----
-
-## Recommended file usage by workshop phase
-
-### Phase 1 — Clinical case and dataset introduction
-Use:
-- `full_data.csv`
-
-Why:
-- easier to explain
-- better for describing the dataset to non-expert participants
-- more suitable for identifying relevant subgroups and contextual variables
-
----
-
-### Phase 2 — Representativeness audit
-Use:
-- `full_data.csv`
-
-Why:
-- preserves interpretable dataset structure
-- allows direct inspection of subgroup composition
-- supports paper-based audit activities
-- useful for computing intersections such as:
-  - sex × subgroup
-  - age × sex
-  - ethnicity × sex
-  - site/device × sex, if applicable
-
----
-
-### Phase 3 — Performance gap analysis
-Use:
-- `train_features.csv`
-- `train_labels.csv`
-- `test_features.csv`
-- `test_labels.csv`
-
-Why:
-- these files are already prepared for model fitting and evaluation
-- ideal for comparing:
-  - overall metrics
-  - majority-group metrics
-  - minority-group metrics
-  - subgroup-intersection metrics
-
----
-
-### Phase 4 — Demonstration that bias originates in the dataset
-Use:
-- `train_features.csv`
-- `train_labels.csv`
-- `test_features.csv`
-- `test_labels.csv`
-
-Why:
-- training data can be modified across scenarios
-- the test set can remain fixed
-- this supports controlled experiments such as:
-
-  - **Scenario A**: nearly balanced by sex, imbalanced by severity  
-  - **Scenario B**: same sex balance, improved severity balance  
-  - **Scenario C**: same sex and severity balance, imbalanced by site/device  
-  - **Scenario D**: improved balance across subgroup intersections  
-
-This phase is essential to show that, even with the **same algorithm**, changing the training data changes subgroup behavior and observed bias.
-
----
-
-## Why `train_features.csv` is larger than `full_data.csv`
-
-This is expected.
-
-`train_features.csv` is a **preprocessed, model-ready feature matrix**, while `full_data.csv` is closer to the original dataset format.
-
-Possible reasons include:
-- one-hot encoding of categorical variables
-- expansion into multiple numeric columns
-- standardized numeric values
-- wider tabular structure after preprocessing
-
-So:
-- `full_data.csv` is better for interpretation
-- `train_features.csv` is better for modeling
-
----
-
-## Data workflow recommendation
-
-For the workshop, keep a clear separation between:
-
-### Interpretable data
-Used for:
-- teaching
-- inspection
-- representativeness
-- subgroup reasoning
-
-Primary file:
-- `full_data.csv`
-
-### Model-ready data
-Used for:
-- training
-- evaluation
-- subgroup performance analysis
-- scenario-based experiments
-
-Primary files:
-- `train_features.csv`
-- `train_labels.csv`
-- `test_features.csv`
-- `test_labels.csv`
-
----
-
-## Version control recommendation
-
-Large preprocessed files such as `train_features.csv` and `test_features.csv` may be difficult to store directly in Git.
-
-Recommended strategy:
-- use **Git** for:
-  - code
-  - notebooks
-  - documentation
-  - configuration
-  - README files
-- use **Google Drive** or shared storage for:
-  - large CSV files
-  - processed datasets
-  - backup copies
-
-If needed, feature matrices should be regenerable from the raw/full dataset through documented preprocessing steps.
-
----
-
-## Team note
-
-All team members should be familiar with:
-- the clinical task
-- the meaning of `hospital_death`
-- the difference between `full_data.csv` and preprocessed feature files
-- which file belongs to which workshop phase
-- the rationale for choosing this dataset for the workshop
-
-Even team members focused on slides or facilitation should understand the dataset structure well enough to explain the logic behind the exercises.
-
----
-
-## Quick reference
-
-| File | Type | Main purpose |
-|---|---|---|
-| `full_data.csv` | complete dataset | case description, EDA, representativeness |
-| `train_features.csv` | preprocessed inputs | model training |
-| `train_labels.csv` | training targets | supervised learning |
-| `test_features.csv` | preprocessed inputs | model evaluation |
-| `test_labels.csv` | test targets | final evaluation |
-
----
-
-## Current status
-
-This dataset is currently the main workshop dataset because it:
-- is already available
-- is compatible with a Google Colab workflow
-- supports subgroup analysis
-- supports representativeness reasoning
-- supports performance gap analysis
-- supports controlled experiments on dataset-induced bias
+```text
+.
+├── dataset/
+│   ├── README.md
+│   ├── full_data.csv
+│   ├── train_features.csv
+│   ├── train_labels.csv
+│   ├── test_features.csv
+│   └── test_labels.csv
+├── notebooks/
+│   ├── 01_dataset_and_context.ipynb
+│   ├── 02_representativeness_audit.ipynb
+│   ├── 03_performance_gap.ipynb
+│   └── 04_bias_origin_experiment.ipynb
+├── slides/
+├── docs/
+├── outputs/
+└── README.md
