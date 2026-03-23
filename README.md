@@ -2,6 +2,8 @@ dataset: https://drive.google.com/drive/folders/15uHafn7dPMz6nAEAR2M27z-oYZyOJIw
 
 Notes: https://docs.google.com/document/d/16mO6olskOOdfW9gMZpkZguCOlMTwVjSn_3RR67_I9EA/edit?tab=t.0
 
+Report da tenere aggiornato (per pubblicazione): https://docs.google.com/document/d/16mO6olskOOdfW9gMZpkZguCOlMTwVjSn_3RR67_I9EA/edit?tab=t.0
+
 
 # Clinical AI Bias Workshop  
 [![Google Colab](https://img.shields.io/badge/Platform-Google%20Colab-F9AB00?logo=googlecolab&logoColor=white)](#getting-started)
