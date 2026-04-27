@@ -1,6 +1,6 @@
 dataset: https://drive.google.com/drive/folders/15uHafn7dPMz6nAEAR2M27z-oYZyOJIwv?hl=it
 
-Notes: https://docs.google.com/document/d/16mO6olskOOdfW9gMZpkZguCOlMTwVjSn_3RR67_I9EA/edit?tab=t.0
+Cartella con Slides e Note: [https://docs.google.com/document/d/16mO6olskOOdfW9gMZpkZguCOlMTwVjSn_3RR67_I9EA/edit?tab=t.0](https://drive.google.com/drive/folders/1FfVu3Cg9fPm5WI9rwil3kHKtSXjrl6Fx)
 
 Report da tenere aggiornato (per pubblicazione): https://docs.google.com/document/d/16mO6olskOOdfW9gMZpkZguCOlMTwVjSn_3RR67_I9EA/edit?tab=t.0
 
