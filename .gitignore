@@ -1,0 +1,13 @@
+# Dataset NHANES estratto (lo zip resta committato)
+NHANES_2013_2014_CSV/
+
+# Output del workshop (rigenerabili da notebook)
+archive/
+
+# macOS
+.DS_Store
+
+# Cache Python e Jupyter
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
