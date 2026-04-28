@@ -1,0 +1,13 @@
+target,n_nonNA,prev_pct,score_avg_top50gap,max_gap,max_gap_var,rM_topvar,rF_topvar
+bp_told_to_take_chol_meds,4518,32.07,0.115,0.189,cholesterol_total_mgdl,-0.125,0.064
+mc_arthritis_ever,5756,26.2,0.114,0.232,hemoglobin_gdl,-0.179,0.053
+diab_doctor_told_diabetes,6113,191.35,0.098,0.205,diab_taking_insulin,0.471,0.266
+mc_cancer_ever,5769,9.48,0.095,0.186,hemoglobin_gdl,-0.147,0.039
+mc_heart_attack_ever,5766,3.99,0.092,0.162,hematocrit_pct,-0.126,0.036
+mc_thyroid_problem_ever,5758,10.44,0.084,0.132,hemoglobin_gdl,-0.085,0.047
+mc_chf_ever,5761,3.16,0.083,0.166,mc_copd_ever,-0.268,-0.102
+mc_chronic_bronchitis_ever,5761,5.55,0.08,0.158,smoke_cigar_past_5d,-0.018,-0.176
+mc_angina_ever,5761,2.36,0.078,0.138,mc_copd_ever,-0.219,-0.081
+mc_emphysema_ever,5766,1.65,0.078,0.117,osteo_told_osteoporosis_ever,0.043,-0.074
+mc_stroke_ever,5764,3.5,0.075,0.144,oh_mouth_problem_embarrass,0.059,-0.085
+diab_prediabetes_told,5206,5.19,0.073,0.136,diab_risk_told_by_doctor,-0.054,-0.19

@@ -1,0 +1,4 @@
+,cs_problem_during_pregnancy,cs_problem_started_during_pregnancy,rh_hormone_replacement_ever
+cs_problem_during_pregnancy,1.0,0.24412424448328515,0.013633549002089034
+cs_problem_started_during_pregnancy,0.24412424448328515,1.0,0.06128335136424749
+rh_hormone_replacement_ever,0.013633549002089034,0.06128335136424749,1.0

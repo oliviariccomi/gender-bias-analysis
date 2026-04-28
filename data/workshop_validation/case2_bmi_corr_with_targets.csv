@@ -1,0 +1,13 @@
+target,r_BMI_M,r_BMI_F,abs_gap
+mc_chf_ever,0.092,0.091,0.001
+mc_stroke_ever,0.007,0.001,0.006
+diab_doctor_told_diabetes,-0.115,-0.107,0.008
+mc_cancer_ever,-0.011,-0.003,0.008
+bp_told_to_take_chol_meds,0.121,0.111,0.011
+mc_chronic_bronchitis_ever,0.065,0.079,0.015
+mc_emphysema_ever,0.014,-0.004,0.019
+mc_angina_ever,0.044,0.023,0.021
+mc_heart_attack_ever,0.053,0.029,0.024
+mc_thyroid_problem_ever,0.03,0.074,0.045
+mc_arthritis_ever,0.148,0.196,0.048
+diab_prediabetes_told,0.069,0.154,0.086

@@ -1,0 +1,15 @@
+,F,M,diff_M_minus_F
+weight_kg,60.196,65.07,4.874
+standing_height_cm,151.504,160.444,8.94
+waist_circ_cm,86.939,87.615,0.676
+bmi,26.247,25.086,-1.161
+bp_systolic_1,116.461,119.858,3.397
+bp_diastolic_1,65.336,66.223,0.887
+glucose_serum_mgdl,100.909,103.778,2.869
+hemoglobin_gdl,13.093,14.295,1.202
+creatinine_mgdl,0.773,0.995,0.222
+cholesterol_total_mgdl,182.841,176.052,-6.789
+hdl_cholesterol_mgdl,56.274,49.769,-6.505
+triglycerides_mgdl,104.485,120.653,16.168
+albumin_gdl,4.192,4.379,0.187
+iron_ugdl,76.606,90.805,14.199

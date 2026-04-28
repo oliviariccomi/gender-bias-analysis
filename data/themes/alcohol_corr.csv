@@ -1,0 +1,4 @@
+,consumed_alcohol_before_draw,alc_12_drinks_in_year,alc_avg_drinks_per_drinking_day
+consumed_alcohol_before_draw,1.0,0.03682264332835417,-0.0034355327072237646
+alc_12_drinks_in_year,0.03682264332835417,1.0,-0.020391455123493444
+alc_avg_drinks_per_drinking_day,-0.0034355327072237646,-0.020391455123493444,1.0
