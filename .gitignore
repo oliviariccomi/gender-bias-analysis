@@ -11,3 +11,6 @@ archive/
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
+
+script_presentazione.md
+CLAUDE.md
