@@ -4,101 +4,123 @@ Cartella con Slides e Note: [https://docs.google.com/document/d/16mO6olskOOdfW9g
 
 Report da tenere aggiornato (per pubblicazione): https://docs.google.com/document/d/16mO6olskOOdfW9gMZpkZguCOlMTwVjSn_3RR67_I9EA/edit?tab=t.0
 
----
 
-# Clinical AI Bias Workshop
-
+# Clinical AI Bias Workshop  
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/oliviariccomi/gender-bias-analysis/blob/main/Fase_3_4_Modelli_Performance_Gap.ipynb)
-[![Google Colab](https://img.shields.io/badge/Platform-Google%20Colab-F9AB00?logo=googlecolab&logoColor=white)](#come-aprire-il-notebook)
-[![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](#requisiti)
-[![Status](https://img.shields.io/badge/Status-Ready-2ea44f)](#)
-[![Audience](https://img.shields.io/badge/Audience-Clinici%20%2B%20Ricercatori-0a7ea4)](#workshop-goal)
+[![Google Colab](https://img.shields.io/badge/Platform-Google%20Colab-F9AB00?logo=googlecolab&logoColor=white)](#getting-started)
+[![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](#getting-started)
+[![Status](https://img.shields.io/badge/Status-In%20Preparation-6f42c1)](#status)
+[![Audience](https://img.shields.io/badge/Audience-Beginners%20to%20Intermediate-0a7ea4)](#workshop-goal)
 
-Workshop hands-on sul **bias di genere nei modelli predittivi clinici** — SaniDays Roma, 23 maggio 2026.
+This repository contains the material for a hands-on workshop on **dataset bias, representativeness, and subgroup performance gaps in clinical AI**.
+
+The workshop is designed for participants with limited coding experience and is intended to run primarily in **Google Colab**, with a strong focus on **interpretation, critical thinking, and fairness-aware model evaluation** rather than advanced implementation details.
 
 ---
 
-## Come aprire il notebook
+## ▶ Open the hands-on notebook
 
-**Clicca qui → apre il notebook nella tua sessione personale Google Colab:**
+**Click to open in your own Google Colab session (no setup needed):**
 
-**[▶ Apri in Google Colab](https://colab.research.google.com/github/oliviariccomi/gender-bias-analysis/blob/main/Fase_3_4_Modelli_Performance_Gap.ipynb)**
+**[Fase_3_4_Modelli_Performance_Gap.ipynb](https://colab.research.google.com/github/oliviariccomi/gender-bias-analysis/blob/main/Fase_3_4_Modelli_Performance_Gap.ipynb)**
 
-Oppure copia questo link nel browser:
-```
-https://colab.research.google.com/github/oliviariccomi/gender-bias-analysis/blob/main/Fase_3_4_Modelli_Performance_Gap.ipynb
-```
-
-> Ogni persona che clicca ottiene la propria sessione indipendente. Non è necessario caricare nessun file — il dataset NHANES viene scaricato automaticamente dalla prima cella.
-
-**Procedura:**
-1. Clicca il link sopra
-2. Accedi con il tuo account Google (se richiesto)
-3. `Runtime → Run all` (oppure `Ctrl+F9`)
-4. La prima esecuzione installa le dipendenze e scarica i dati (~2 minuti)
+> Each person who clicks gets their own independent session. The NHANES dataset is downloaded automatically by the first cell — no file upload needed. Run all cells with `Runtime → Run all`.
 
 ---
 
 ## Workshop goal
 
-Due domande, due esperimenti su dati reali (NHANES 2013-2014, 6.113 adulti):
+The purpose of the workshop is to help participants understand that:
 
-1. **Caso 1 — Bias di numerosità**: se riduco la quota di donne nel training, il modello peggiora sulle donne?
-2. **Caso 2 — Two Clinics**: se le donne e gli uomini sono reclutati da contesti diversi (pur essendo 50/50 in numero), il modello sbaglia comunque?
+- bias can emerge from the **dataset**, not only from the algorithm
+- strong aggregate metrics can hide important **subgroup disparities**
+- a dataset can appear balanced and still be **non-representative**
+- changing the composition of the training data can change subgroup performance, even when the model remains the same
 
-**Messaggio chiave**: il bias di genere nei modelli clinici si nasconde nelle metriche di calibrazione, non nell'AUROC. Per vederlo serve stratificare per sesso.
+The workshop combines a clinical use case, exploratory analysis, basic modeling, and controlled experiments to show how bias can be detected and discussed in a practical way.
 
 ---
 
-## Struttura del notebook
+## Workshop structure
 
-| Sezione | Contenuto | Durata stimata |
-|---------|-----------|----------------|
-| **Pre-flight** | Pulizia dataset NHANES, test set fisso, spiegazione bootstrap | ~5 min |
-| **Caso 1A** | Regressione lineare sulla pressione sistolica | ~2 min |
-| **Caso 1B** | Regressione logistica sul diabete | ~4 min |
-| **Caso 1C** | XGBoost sull'artrite + SHAP | ~5 min |
-| **Caso 2** | Two Clinics (asimmetria BMI) + LogReg + XGBoost | ~5 min |
+The workshop is organized into four phases.
 
-**Totale: ~20 minuti live**, tutto eseguito in tempo reale.
+### 1. Clinical case and dataset introduction
+Participants are introduced to the clinical prediction task and to the dataset used throughout the workshop.
+
+### 2. Representativeness
+Participants explore how bias can arise from:
+- sample composition
+- inclusion criteria
+- clinical setting
+- site or device
+- collected variables
+
+This phase includes a paper-based audit focused on subgroup and sex distributions.
+
+### 3. Performance gap
+Participants observe how model performance changes across:
+- the full dataset
+- majority sex
+- minority sex
+- selected subgroup intersections, where feasible
+
+Metrics may include:
+- AUC
+- sensitivity
+- specificity
+
+Both a simple baseline model and a lightweight ML/deep learning model may be used.
+
+### 4. Demonstration that bias originates in the dataset
+Participants see experimentally that, with the **same algorithm**, changing the composition of the training data can change subgroup performance and observed bias.
+
+This phase is based on multiple training scenarios with a **fixed test set**.
 
 ---
 
 ## Dataset
 
-**NHANES 2013-2014** — National Health and Nutrition Examination Survey (USA).
+The workshop uses the dataset already included in this project.
 
-- 6.113 adulti (≥18 anni): 2.916 uomini, 3.197 donne
-- Variabili: esami del sangue, misure fisiche, questionari, diagnosi cliniche
-- File: `data/raw_dataset/NHANES_2013_2014_master.csv` (scaricato automaticamente su Colab)
+**Clinical task**
+- binary classification
+- prediction of `hospital_death`
+
+**Main files**
+- `dataset/full_data.csv`
+- `dataset/train_features.csv`
+- `dataset/train_labels.csv`
+- `dataset/test_features.csv`
+- `dataset/test_labels.csv`
+
+**Recommended usage**
+- use `full_data.csv` for dataset description, EDA, and representativeness audit
+- use train/test feature-label files for modeling and evaluation
+
+For a more detailed description of the data files, see:
+- `dataset/README.md`
 
 ---
 
-## Requisiti
+## Repository structure
 
-Nessuna installazione locale necessaria — tutto gira su Google Colab.
-
-Se volete eseguire in locale:
-```bash
-pip install xgboost shap statsmodels scikit-learn pandas numpy matplotlib seaborn
-```
-Su macOS, XGBoost richiede `libomp`:
-```bash
-brew install libomp
-```
-
----
-
-## Repository
-
-```
+```text
 .
-├── Fase_3_4_Modelli_Performance_Gap.ipynb   # Notebook principale del workshop
-├── Fase_1_2_EDA_Representativeness.ipynb    # EDA e analisi di rappresentatività
-├── data/
-│   └── raw_dataset/
-│       └── NHANES_2013_2014_master.csv      # Dataset principale
-├── RECAP_RISULTATI.md                        # Risultati numerici di riferimento
-├── script_presentazione.md                  # Script parlato del workshop
-└── NHANES_2013_2014_CSV.zip                 # Archivio originale NHANES
+├── dataset/
+│   ├── README.md
+│   ├── full_data.csv
+│   ├── train_features.csv
+│   ├── train_labels.csv
+│   ├── test_features.csv
+│   └── test_labels.csv
+├── notebooks/
+│   ├── 01_dataset_and_context.ipynb
+│   ├── 02_representativeness_audit.ipynb
+│   ├── 03_performance_gap.ipynb
+│   └── 04_bias_origin_experiment.ipynb
+├── slides/
+├── docs/
+├── outputs/
+└── README.md
 ```
